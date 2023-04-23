@@ -1,0 +1,19 @@
+var game = document.createElement('div');
+game.innerHTML = '<div id="game"></div>';
+document.body.appendChild(game);
+var game = document.getElementById('game');
+var gameWidth = game.offsetWidth;
+var gameHeight = game.offsetHeight;
+var gameCanvas = document.createElement('canvas');
+gameCanvas.width = gameWidth;
+gameCanvas.height = gameHeight;
+game.appendChild(gameCanvas);
+var gameContext = gameCanvas.getContext('2d');
+var gameLoop = function() {
+  gameContext.fillStyle = '#000000';
+  gameContext.fillRect(0, 0, gameWidth, gameHeight);
+  gameContext.fillStyle = '#ffffff';
+  gameContext.fillRect(10, 10, 10, 10);
+  window.requestAnimationFrame(gameLoop);
+};
+window.requestAnimationFrame(gameLoop);
